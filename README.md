@@ -1,1 +1,4 @@
-# Practical.DistributedTransactions
+- [Patterns for distributed transactions within a microservices architecture | Red Hat Developer](https://developers.redhat.com/blog/2018/10/01/patterns-for-distributed-transactions-within-a-microservices-architecture)
+- [Handling Distributed Transactions in the Microservice world](https://medium.com/swlh/handling-transactions-in-the-microservice-world-c77b275813e0)
+- [Saga distributed transactions - Azure Design Patterns | Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/saga/saga)
+- [Distributed Transaction in Microservices using SAGA Pattern – Ramani Sandeep](https://ramanisandeep.wordpress.com/2020/06/21/distributed-transaction-in-microservices-using-saga-pattern/)
