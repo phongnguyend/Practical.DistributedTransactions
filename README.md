@@ -2,3 +2,7 @@
 - [Handling Distributed Transactions in the Microservice world](https://medium.com/swlh/handling-transactions-in-the-microservice-world-c77b275813e0)
 - [Saga distributed transactions - Azure Design Patterns | Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/saga/saga)
 - [Distributed Transaction in Microservices using SAGA Pattern – Ramani Sandeep](https://ramanisandeep.wordpress.com/2020/06/21/distributed-transaction-in-microservices-using-saga-pattern/)
+- [Saga Patterns by Example - DEV](https://dev.to/theagilemonkeys/saga-patterns-by-example-fod)
+- [Modeling Saga as a State Machine - DZone Microservices](https://dzone.com/articles/modelling-saga-as-a-state-machine)
+- [https://github.com/mizrael/OpenSleigh](https://github.com/mizrael/OpenSleigh)
+- [https://github.com/Azure-Samples/saga-orchestration-serverless](https://github.com/Azure-Samples/saga-orchestration-serverless)
