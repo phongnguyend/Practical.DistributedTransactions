@@ -15,8 +15,8 @@
 
     public interface IDistributedTransactionHandler<T> where T : DistributedTransaction
     {
-        void NextCommitingStep(T transaction);
+        void Handle(T transaction);
 
-        void NextRevertingStep(T transaction);
+        void Compensate(T transaction);
     }
 }

@@ -22,15 +22,15 @@
         public const string SHIPPING_CANCELED_SUCCEDED = "SHIPPING_CANCELED_SUCCEDED";
         public const string SHIPPING_CANCELED_FAILED = "SHIPPING_CANCELED_FAILED";
 
-        public void NextCommitingStep(PurchaseTransaction transaction)
+        public void Handle(PurchaseTransaction transaction)
         {
             switch (transaction.State)
             {
                 case ORDER_CREATED:
-                    ChargeMoney(transaction);
+                    HandleMoney(transaction);
                     break;
                 case PAYMENT_CHARGED_SUCCEDED:
-                    BookShipping(transaction);
+                    HandleShipping(transaction);
                     break;
                 case SHIPPING_BOOKED_SUCCEDED:
                     transaction.Completed = true;
@@ -38,15 +38,15 @@
             }
         }
 
-        public void NextRevertingStep(PurchaseTransaction transaction)
+        public void Compensate(PurchaseTransaction transaction)
         {
             switch (transaction.State)
             {
                 case ORDER_CANCELED:
-                    CancelShipping(transaction);
+                    CompensateShipping(transaction);
                     break;
                 case SHIPPING_CANCELED_SUCCEDED:
-                    ReturnMoney(transaction);
+                    CompensateMoney(transaction);
                     break;
                 case PAYMENT_RETURNED_SUCCEDED:
                     transaction.Canceled = true;
@@ -54,7 +54,7 @@
             }
         }
 
-        private void ChargeMoney(PurchaseTransaction transaction)
+        private void HandleMoney(PurchaseTransaction transaction)
         {
             transaction.State = PAYMENT_CHARGING;
 
@@ -64,7 +64,7 @@
             if (paymentRs)
             {
                 transaction.State = PAYMENT_CHARGED_SUCCEDED;
-                NextCommitingStep(transaction);
+                Handle(transaction);
             }
             else
             {
@@ -73,7 +73,7 @@
             }
         }
 
-        private void ReturnMoney(PurchaseTransaction transaction)
+        private void CompensateMoney(PurchaseTransaction transaction)
         {
             transaction.State = PAYMENT_RETURNING;
 
@@ -83,7 +83,7 @@
             if (paymentRs)
             {
                 transaction.State = PAYMENT_RETURNED_SUCCEDED;
-                NextRevertingStep(transaction);
+                Compensate(transaction);
             }
             else
             {
@@ -92,7 +92,7 @@
             }
         }
 
-        private void BookShipping(PurchaseTransaction transaction)
+        private void HandleShipping(PurchaseTransaction transaction)
         {
             transaction.State = SHIPPING_BOOKING;
 
@@ -102,7 +102,7 @@
             if(shippingRs)
             {
                 transaction.State = SHIPPING_BOOKED_SUCCEDED;
-                NextCommitingStep(transaction);
+                Handle(transaction);
             }
             else
             {
@@ -111,7 +111,7 @@
             }
         }
 
-        private void CancelShipping(PurchaseTransaction transaction)
+        private void CompensateShipping(PurchaseTransaction transaction)
         {
             transaction.State = SHIPPING_CANCELING;
 
@@ -121,7 +121,7 @@
             if (shippingRs)
             {
                 transaction.State = SHIPPING_CANCELED_SUCCEDED;
-                NextRevertingStep(transaction);
+                Compensate(transaction);
             }
             else
             {
