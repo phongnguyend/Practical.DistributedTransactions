@@ -5,4 +5,5 @@
 - [Saga Patterns by Example - DEV](https://dev.to/theagilemonkeys/saga-patterns-by-example-fod)
 - [Modeling Saga as a State Machine - DZone Microservices](https://dzone.com/articles/modelling-saga-as-a-state-machine)
 - [https://github.com/mizrael/OpenSleigh](https://github.com/mizrael/OpenSleigh)
+- [https://github.com/MassTransit/Automatonymous](https://github.com/MassTransit/Automatonymous)
 - [https://github.com/Azure-Samples/saga-orchestration-serverless](https://github.com/Azure-Samples/saga-orchestration-serverless)
